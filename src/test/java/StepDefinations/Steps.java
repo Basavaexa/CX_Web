@@ -8,11 +8,15 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import PageObjects.Assign_Asset_For_Hospitality;
 import PageObjects.Login;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -60,6 +64,12 @@ public class Steps extends BaseClass {
 			System.setProperty("webdriver.ie.driver",configProp.getProperty("iepath") );	
 			driver=new InternetExplorerDriver();
 		}
+		
+		else if(br.equals("msedge")) 
+		{
+			System.setProperty("webdriver.edge.driver",configProp.getProperty("msedgepath") );	
+			driver=new EdgeDriver();
+		} 
 
 		logger.info("************* Launching browser**************");	
 	}
@@ -86,6 +96,7 @@ public class Steps extends BaseClass {
 
 
 		ln=new Login(driver);
+		ah = new Assign_Asset_For_Hospitality(driver);
 
 
 	}
@@ -115,8 +126,107 @@ public class Steps extends BaseClass {
 		else
 		{
 			System.out.println("Login failed");
-		}	   
+		}	
+		
+		logger.info("************* Successful login**************");	
 	}
+	
+	
+//	---------------------------------------Assigning asset for hospitality------------------------
+	@When("Click on App and configuration")
+	public void click_on_App_and_configuration() {
+	   ah.click_on_App_and_configuration();
+	}
+
+	@When("Click on Assign Asset")
+	public void click_on_Assign_Asset() {
+	   ah.click_on_Assign_Asset();
+	}
+
+	@When("Click and Select SLA user")
+	public void click_and_Select_SLA_user() throws InterruptedException {
+	   ah.click_and_Select_SLA_user();
+	}
+
+	@When("Click and Select asset")
+	public void click_and_Select_asset() {
+	   ah.click_and_Select_asset();
+	}
+
+	@When("Click and Select parent category")
+	public void click_and_Select_parent_category() throws InterruptedException {
+	   ah.click_and_Select_parent_category();
+	}
+
+	@When("Click and Select hotels")
+	public void click_and_Select_hotels() throws InterruptedException {
+	  ah.click_and_Select_hotels();
+	  
+	}
+
+	@When("Click and Select level")
+	public void click_and_Select_level() throws InterruptedException 
+	{
+	  ah.click_and_Select_level();
+	}
+
+	@When("Click and Select category")
+	public void click_and_Select_category() throws InterruptedException {
+	   ah.click_and_Select_category();
+	}
+
+	@When("Click and Select category user")
+	public void click_and_Select_category_user() {
+	  ah.click_and_Select_category_user();
+	}
+
+	@When("Click and Select Add cc")
+	public void click_and_Select_Add_cc() {
+	  ah.click_and_Select_Add_cc();
+	}
+
+	@When("Click and Select Add bcc")
+	public void click_and_Select_Add_bcc() {
+	 ah.click_and_Select_Add_bcc();
+	}
+
+	@When("Click on assign")
+	public void click_on_assign() throws InterruptedException {
+	  ah.click_on_assign();
+	  
+	  logger.info("************* Asset Assigned **************");	
+	  
+	  WebElement popup = driver.findElement(By.xpath("//h2[text()='Records of community assigned to SLA users!!!']"));
+	  if(popup.getText().contains("Records of community assigned to SLA users!!!")) {
+		  
+		  driver.findElement(By.xpath("//button[text()='OK']")).click();
+		  System.out.println("Successfully asset assigned");
+		  
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath("(//span[text()='Delete'])[1]")).click();
+		  driver.findElement(By.xpath("(//button[text()='Yes'])[2]")).click();
+		  
+		  WebElement popup2 = driver.findElement(By.xpath("//h2[text()='Successfully selected asset user(s) are deleted.']"));
+
+		  if(popup2.getText().contains("Successfully selected asset user(s) are deleted.")) {
+			  driver.findElement(By.xpath("//button[text()='OK']")).click();
+			  System.out.println("Successfully deleted the assigned asset");
+
+		  }
+		  logger.info("************* Asset assigned and deleted **************");	
+		  
+	  }
+	  else {
+		  System.out.println("Failed");
+
+	  }
+	}
+	
+	
+
+
+	
+	
 
 
 
