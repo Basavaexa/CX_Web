@@ -11,6 +11,7 @@ import PageObjects.AssignTaskForAldarDevelopment;
 import PageObjects.AssignTaskForAldarEducation;
 import PageObjects.AssignTaskForCommercialBuilding;
 import PageObjects.AssignTaskForHospitality;
+import PageObjects.FAQ;
 import PageObjects.Login;
 import PageObjects.ReassignTaskToAuditor;
 
@@ -31,6 +32,7 @@ public class BaseClass
 	public AssignTaskForHospitality HP;
 	public AssignTaskDownload DW;
 	public ReassignTaskToAuditor RA;
+	public FAQ FQ;
 	
 	public static Logger logger;
 

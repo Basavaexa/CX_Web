@@ -19,6 +19,7 @@ import PageObjects.AssignTaskForAldarDevelopment;
 import PageObjects.AssignTaskForAldarEducation;
 import PageObjects.AssignTaskForCommercialBuilding;
 import PageObjects.AssignTaskForHospitality;
+import PageObjects.FAQ;
 import PageObjects.Login;
 import PageObjects.ReassignTaskToAuditor;
 import cucumber.api.java.After;
@@ -111,7 +112,7 @@ public class Steps extends BaseClass {
         HP=new AssignTaskForHospitality(driver);
         DW=new AssignTaskDownload(driver);
         RA=new ReassignTaskToAuditor(driver);
-        
+        FQ=new FAQ(driver);
         
 	}
 
@@ -347,6 +348,44 @@ public class Steps extends BaseClass {
 	}
 
 
+	
+//////////////////////////////////// FAQ ////////////////////////////////////
+	
+	@Then("Click on FAQ")
+	public void click_on_FAQ() 
+	{
+		FQ.click_on_FAQ();
+	  
+	}
+
+	@Then("Click and Select Role")
+	public void click_and_Select_Role() throws InterruptedException 
+	{
+	    FQ.click_and_Select_Role();
+	}
+
+	@Then("Enter the Question {string}")
+	public void enter_the_Question(String string) 
+	{
+	    FQ.enter_the_Question(string);
+	}
+
+	@Then("Enter Answer{string}")
+	public void enter_Answer(String string)
+    {
+	   FQ.enter_Answer(string);
+	}
+
+	@Then("Click on Add")
+	public void click_on_Add() throws InterruptedException 
+	{
+	   FQ.click_on_Add(); 
+	}
+
+	
+	
+	
+	
 	
 	
 	
