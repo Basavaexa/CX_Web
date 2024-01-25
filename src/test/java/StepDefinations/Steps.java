@@ -14,6 +14,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import PageObjects.AddUpdateCategoriesQuestions;
 import PageObjects.AssignTaskDownload;
 import PageObjects.AssignTaskForAldarDevelopment;
 import PageObjects.AssignTaskForAldarEducation;
@@ -21,7 +22,10 @@ import PageObjects.AssignTaskForCommercialBuilding;
 import PageObjects.AssignTaskForHospitality;
 import PageObjects.FAQ;
 import PageObjects.Login;
+import PageObjects.PlannedAuditCategories;
+import PageObjects.PlannedAuditDelete;
 import PageObjects.ReassignTaskToAuditor;
+import PageObjects.TicketList;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
@@ -113,7 +117,10 @@ public class Steps extends BaseClass {
         DW=new AssignTaskDownload(driver);
         RA=new ReassignTaskToAuditor(driver);
         FQ=new FAQ(driver);
-        
+        CQ=new AddUpdateCategoriesQuestions (driver);
+        TL=new TicketList(driver);
+        PD=new PlannedAuditDelete(driver);
+        PC=new PlannedAuditCategories(driver);
 	}
 
 
@@ -385,7 +392,231 @@ public class Steps extends BaseClass {
 	
 	
 	
+///////////////////////////////////// Add/Update Categories & Questions /////////////////////////////////
 	
+	
+	
+	@Then("Click on Add Update Categories Questions")
+	public void click_on_Add_Update_Categories_Questions() throws InterruptedException 
+	{
+	    CQ.click_on_Add_Update_Categories_Questions();
+	}
+
+	@Then("Click and Select Asset for Category Question")
+	public void click_and_Select_Asset_for_Category_Question() throws InterruptedException 
+	{
+	    CQ.click_and_Select_Asset_for_Category_Question();
+	}
+
+	@Then("Click and Add Parent Category for Category Question {string}")
+	public void click_and_Add_Parent_Category_for_Category_Question(String string) throws InterruptedException 
+	{
+	   CQ.click_and_Add_Parent_Category_for_Category_Question(string);
+	}
+
+	@Then("Click and Add Category for Category Question {string}")
+	public void click_and_Add_Category_for_Category_Question(String string) throws InterruptedException 
+	{
+	    CQ.click_and_Add_Category_for_Category_Question(string);
+	}
+
+	@Then("Click and Add Question for Category Question {string}")
+	public void click_and_Add_Question_for_Category_Question(String string) throws InterruptedException 
+	{
+	   CQ.click_and_Add_Question_for_Category_Question(string); 
+	}
+
+	@Then("Click and Add Options for Category Question {string}")
+	public void click_and_Add_Options_for_Category_Question(String string) throws InterruptedException 
+	{
+	    CQ.click_and_Add_Options_for_Category_Question(string);
+	}
+
+	@Then("Click on Add button")
+	public void click_on_Add_button() throws InterruptedException 
+	{
+	    CQ.click_on_Add_button();
+	}
+
+	
+	
+////////////////////////////////////TicketList//////////////////////////////////////////////////////
+	
+	@Then("Click on CX Inspection")
+	public void click_on_CX_Inspection() 
+	{
+	    TL.click_on_CX_Inspection();
+	}
+
+	@Then("Click on Tickets")
+	public void click_on_Tickets() 
+	{
+	   TL.click_on_Tickets(); 
+	}
+
+	@Then("Click on View icon for any Open Tickets")
+	public void click_on_View_icon_for_any_Open_Tickets() throws InterruptedException 
+	{
+	    TL.click_on_View_icon_for_any_Open_Tickets();
+	}
+
+	@Then("Click and Select the Status Inprogress")
+	public void click_and_Select_the_Status_Inprogress() throws InterruptedException 
+	{
+	    TL.click_and_Select_the_Status_Inprogress();
+	}
+
+	@Then("Upload Photo {string}")
+	public void upload_Photo(String string)
+	{
+	    TL.upload_Photo(string);
+	}
+
+	@Then("Enter Comment {string}")
+	public void enter_Comment(String string) 
+	{
+	    TL.enter_Comment(string);
+	}
+
+
+	@Then("Click on Submit")
+	public void click_on_Submit() throws InterruptedException 
+	{
+	   TL.click_on_Submit(); 
+	}
+
+	@Then("Click on View icon for any Inprogress Tickets")
+	public void click_on_View_icon_for_any_Inprogress_Tickets() throws InterruptedException 
+	{
+	   TL.click_on_View_icon_for_any_Inprogress_Tickets(); 
+	}
+
+	@Then("Click and Select the Status Disputed")
+	public void click_and_Select_the_Status_Disputed() throws InterruptedException 
+	{
+	   TL.click_and_Select_the_Status_Disputed();
+	}
+
+	@Then("Upload Photo DS  {string}")
+	public void upload_Photo_DS(String string) 
+	{
+	    TL.upload_Photo_DS(string);
+	}
+
+	@Then("Enter Comment DS {string}")
+	public void enter_Comment_DS(String string) 
+	{
+	    TL.enter_Comment_DS(string);
+	}
+
+
+	@Then("Click on Submit DS")
+	public void click_on_Submit_DS() throws InterruptedException 
+	{
+	    TL.click_on_Submit_DS();
+	}
+
+	@Then("Click on View icon for any Disputed Tickets")
+	public void click_on_View_icon_for_any_Disputed_Tickets() throws InterruptedException 
+	{
+	    TL.click_on_View_icon_for_any_Disputed_Tickets();
+	}
+
+	@Then("Click and Select the Status Completed")
+	public void click_and_Select_the_Status_Completed() throws InterruptedException 
+	{
+	    TL.click_and_Select_the_Status_Completed();
+	}
+
+	@Then("Upload Photo CP  {string}")
+	public void upload_Photo_CP(String string) 
+	{
+	    TL.upload_Photo_CP(string);
+	}
+
+	@Then("Enter Comment CP  {string}")
+	public void enter_Comment_CP(String string) 
+	{
+	   TL.enter_Comment_CP(string);
+	}
+
+
+
+	@Then("Click on Submit CP")
+	public void click_on_Submit_CP() 
+	{
+	    TL.click_on_Submit_CP();
+	}
+
+	@Then("Click on View icon for any Completed Tickets")
+	public void click_on_View_icon_for_any_Completed_Tickets() throws InterruptedException 
+	{
+	    TL.click_on_View_icon_for_any_Completed_Tickets();
+	}
+
+	@Then("Click on Transaction Logs Plus icon")
+	public void click_on_Transaction_Logs_Plus_icon() 
+	{
+	    TL.click_on_Transaction_Logs_Plus_icon();
+
+	}
+
+
+	
+	
+	
+	/////////////////////////////////////////// Planned Audit Delete /////////////////////////////////////
+	
+	@Then("Click on Planned Audit")
+	public void click_on_Planned_Audit() 
+	{
+	    PD.click_on_Planned_Audit();
+	}
+
+	@Then("Click and Select the Inspection")
+	public void click_and_Select_the_Inspection() 
+	{
+	    PD.click_and_Select_the_Inspection();
+	}
+
+	@Then("Click on Delete")
+	public void click_on_Delete() throws InterruptedException 
+	{
+	    PD.click_on_Delete();
+	}
+	
+	
+/////////////////////////// Planned Audit Categories //////////////////////////////////
+	
+	@Then("Click on view")
+	public void click_on_view() throws InterruptedException 
+	{
+	   PC.click_on_view();
+	}
+
+	@Then("Select category all the No answer then click Submit")
+	public void select_category_all_the_No_answer_then_click_Submit() throws InterruptedException 
+	{
+	   PC.select_category_all_the_No_answer_then_click_Submit(); 
+	}
+
+	@Then("Select Category for observation")
+	public void select_Category_for_observation() throws InterruptedException 
+	{
+	   PC.select_Category_for_observation();
+	}
+
+	@Then("Select Point")
+	public void select_Point() throws InterruptedException 
+	{
+	    PC.select_Point();
+	}
+
+	@Then("Click on Submit for PC")
+	public void click_on_Submit_for_PC() 
+	{
+	    PC.click_on_Submit_for_PC();
+	}
 	
 	
 	
