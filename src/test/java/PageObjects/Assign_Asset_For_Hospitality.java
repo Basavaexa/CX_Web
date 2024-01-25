@@ -31,9 +31,7 @@ import cucumber.api.java.en.When;
 			
 			driver.findElement(By.xpath("(//div[text()='Select'])[1]")).click();
 			Thread.sleep(1000);
-			//driver.findElement(By.id("champions_list")).click();
 			driver.findElement(By.xpath("//*[@id=\"searchForm\"]/div[1]/div[1]/div/div/div/div[2]/ul/li[52]/a")).click();
-			//driver.findElement(By.xpath("//*[@id=\"searchForm\"]/div[1]/div[1]/div/div/div/div[2]/ul/li[1]/a/span")).click();
 			
 
 		}
@@ -99,7 +97,8 @@ import cucumber.api.java.en.When;
 		  
 		}
 
-		public void click_and_Select_Add_cc() {
+		public void click_and_Select_Add_cc() throws InterruptedException {
+			Thread.sleep(1000);
 			driver.findElement(By.xpath("(//div[text()='Select'])[1]")).click();
 			driver.findElement(By.xpath("//*[@id=\"searchForm\"]/div[3]/div[1]/div/div/div/div/div[3]/ul/li[7]/a")).click();
 
@@ -108,7 +107,8 @@ import cucumber.api.java.en.When;
 			  // driver.findElement(By.xpath("//*[@id=\"content\"]/div[5]/div/div[1]/h3/div")).click();
 		}
 
-		public void click_and_Select_Add_bcc() {
+		public void click_and_Select_Add_bcc() throws InterruptedException {
+			Thread.sleep(1000);
 			driver.findElement(By.xpath("(//div[text()='Select'])[1]")).click();
 			driver.findElement(By.xpath("//*[@id=\"searchForm\"]/div[3]/div[2]/div/div/div/div/div[3]/ul/li[4]/a")).click();
 			  // driver.findElement(By.xpath("//*[@id=\"content\"]/div[5]/div/div[1]/h3/div")).click();

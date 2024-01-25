@@ -14,6 +14,10 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+
+import PageObjects.Assign_Asset_For_AldarDevelopment;
+import PageObjects.Assign_Asset_For_Hospitality;
+
 import PageObjects.AddUpdateCategoriesQuestions;
 import PageObjects.AssignTaskDownload;
 import PageObjects.AssignTaskForAldarDevelopment;
@@ -21,6 +25,7 @@ import PageObjects.AssignTaskForAldarEducation;
 import PageObjects.AssignTaskForCommercialBuilding;
 import PageObjects.AssignTaskForHospitality;
 import PageObjects.FAQ;
+
 import PageObjects.Login;
 import PageObjects.PlannedAuditCategories;
 import PageObjects.PlannedAuditDelete;
@@ -80,7 +85,7 @@ public class Steps extends BaseClass {
 			driver=new EdgeDriver();
 		} 
 
-		logger.info("************* Launching browser**************");	
+		logger.info("************* Launching browser **************");	
 	}
 
 	
@@ -88,18 +93,18 @@ public class Steps extends BaseClass {
 	
 	
 
-	//	@After
-	//	public void reset() throws Exception {
-	//		try {
-	//			driver.close();
-	//
-	//		} catch (Exception e) {
-	//			
-	//		}
-	//		
-	//		
-	//		
-	//	}
+//		@After
+//		public void reset() throws Exception {
+//			try {
+//				driver.close();
+//	
+//			} catch (Exception e) {
+//				
+//			}
+//			
+//			
+//			
+//		}
 
 	@Given("User launches the browser")
 	public void user_launches_the_browser() {
@@ -109,6 +114,11 @@ public class Steps extends BaseClass {
 
 
 		ln=new Login(driver);
+
+		ah = new Assign_Asset_For_Hospitality(driver);
+		ad = new Assign_Asset_For_AldarDevelopment(driver);
+
+
 		
 		AD= new AssignTaskForAldarDevelopment(driver);
 		AE=new AssignTaskForAldarEducation(driver);
@@ -216,6 +226,14 @@ public class Steps extends BaseClass {
 	    AE.click_and_Select_Auditors_AE();
 	}
 
+	@When("Click and Select Add cc")
+	public void click_and_Select_Add_cc() throws InterruptedException {
+	  ah.click_and_Select_Add_cc();
+	}
+
+	@When("Click and Select Add bcc")
+	public void click_and_Select_Add_bcc() throws InterruptedException {
+	 ah.click_and_Select_Add_bcc();
 	@Then("Click and Select Assets AE")
 	public void click_and_Select_Assets_AE() throws InterruptedException
 	{
@@ -363,6 +381,29 @@ public class Steps extends BaseClass {
 	{
 		FQ.click_on_FAQ();
 	  
+	  WebElement popup = driver.findElement(By.xpath("//h2[text()='Records of community assigned to SLA users!!!']"));
+	  if(popup.getText().equals("Records of community assigned to SLA users!!!")) {
+		  
+		  driver.findElement(By.xpath("//button[text()='OK']")).click();
+		  Thread.sleep(5000);
+		  System.out.println("Successfully asset assigned");
+		  
+		  Thread.sleep(1000);
+		  driver.findElement(By.xpath("(//span[text()='Delete'])[1]")).click();
+		  driver.findElement(By.xpath("(//button[text()='Yes'])[2]")).click();
+		  
+//		  WebElement popup2 = driver.findElement(By.xpath("//h2[text()='Successfully selected asset user(s) are deleted.']"));
+//
+//		  if(popup2.getText().equals("Successfully selected asset user(s) are deleted.")) {
+//			  driver.findElement(By.xpath("//button[text()='OK']")).click();
+//			  System.out.println("Successfully deleted the assigned asset");
+//
+//		  }
+//		  logger.info("************* Asset assigned and deleted **************");	
+		  
+	  }
+	  else {
+		  System.out.println("Failed");
 	}
 
 	@Then("Click and Select Role")
@@ -440,6 +481,46 @@ public class Steps extends BaseClass {
 
 	
 	
+	//------------------------ Assign Asset for Aldar Development----------------------
+	
+	@When("Click and Select asset AD")
+	public void click_and_Select_asset_AD() {
+	   ad.click_and_Select_asset_AD();
+	}
+
+	@When("Click and Select journey")
+	public void click_and_Select_journey() throws InterruptedException {
+	   ad.click_and_Select_journey();
+	}
+
+	@When("Click and Select level AD")
+	public void click_and_Select_level_AD() throws InterruptedException {
+	   ad.click_and_Select_level_AD();
+	}
+
+	@When("Click and Select category AD")
+	public void click_and_Select_category_AD() throws InterruptedException {
+	  ad.click_and_Select_category_AD();
+	}
+
+	@When("Click and Select category user AD")
+	public void click_and_Select_category_user_AD() throws InterruptedException {
+	  ad.click_and_Select_category_user_AD();
+	}
+	
+	@When("Click and Select Add cc AD")
+	public void click_and_Select_Add_cc_AD() {
+	 
+	}
+
+	@When("Click and Select Add bcc AD")
+	public void click_and_Select_Add_bcc_AD() {
+	   
+	}
+
+
+	
+
 ////////////////////////////////////TicketList//////////////////////////////////////////////////////
 	
 	@Then("Click on CX Inspection")
